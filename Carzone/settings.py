@@ -24,7 +24,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '!zaq2l0x**)#!gt9fmvk3#2npvq909^y59k^*5v*2_^b*$=vf)'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -68,6 +68,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'Carzone.urls'
@@ -103,6 +104,8 @@ WSGI_APPLICATION = 'Carzone.wsgi.application'
 #        'HOST':'localhost',
 #    }
 #}
+
+DATABASES = {'default':dj_database_url.config(default='postgres://postgres:giolom1994@localhost/carzone_db')}
 
 
 # Password validation
@@ -166,3 +169,6 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'giolom548@gmail.com'
 EMAIL_HOST_PASSWORD = 'eypyweenwwwqirjn'
 EMAIL_USE_TLS = True
+
+#Whitenoise settings
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
